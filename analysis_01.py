@@ -94,7 +94,6 @@ print(con.execute(
     """
 ).fetchdf())
 
-
 # ========================================
 # PERFORMANCE POR ENDPOINT
 # ========================================
@@ -113,5 +112,25 @@ print(con.execute(
     WHERE status_code < 400 -- Filtro requests exitosos
     GROUP BY endpoint
     ORDER BY p95_RANK DESC
+    """
+).fetchdf())
+
+# ========================================
+# TENDENCIA HORARIA
+# ========================================
+# Identificar picos de tráfico según la hora para planificar capacidad y poder escalar a futuro.
+# Para esto busco la hora a la cual se da la mayor cantidad de requests y el mayor tiempo de respuesta para cada endpoint
+
+print("\n\nLos picos de tráfico según la hora son:")
+print(con.execute(
+    """
+    SELECT
+        EXTRACT(HOUR FROM timestamp) AS HORA,
+        endpoint as ENDPOINT,
+        COUNT(*) AS CANT_REQUESTS,
+        ROUND(AVG(response_time_ms),2) AS RESPONSE_TIME_AVG
+    FROM access_logs
+    GROUP BY HORA, ENDPOINT
+    ORDER BY CANT_REQUESTS DESC;
     """
 ).fetchdf())
