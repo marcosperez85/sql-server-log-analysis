@@ -1,0 +1,24 @@
+[
+  {
+    "incident_id": 1,
+    "title": "Disk space critical #1",
+    "severity": "sev3",
+    "status": "monitoring",
+    "started_at": "2025-07-23 02:11:46",
+    "resolved_at": null,
+    "root_cause": null,
+    "services_affected": 3,
+    "assigned_to": "engineer-2"
+  },
+  {
+    "incident_id": 2,
+    "title": "Payment service down #2",
+    "severity": "sev2",
+    "status": "resolved",
+    "started_at": "2024-12-16 22:05:04",
+    "resolved_at": "2024-12-17 01:49:09",
+    "root_cause": "Configuration issue / Resource exhaustion / Bug in code",
+    "services_affected": 1,
+    "assigned_to": "engineer-2"
+  }
+]
