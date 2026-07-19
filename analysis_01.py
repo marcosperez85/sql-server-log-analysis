@@ -36,7 +36,7 @@ print(con.execute("SELECT * FROM access_logs LIMIT 3").fetchdf())
 # ========================================
 # ¿Cuántos registros? ¿Qué período cubren? ¿cuántos usuarios únicos hay?
 
-print("\nPeríodo cubierto y duración total:")
+print("\n\nPeríodo cubierto y duración total:")
 print(con.execute(
     """WITH cte AS (
         SELECT
@@ -54,4 +54,20 @@ print(con.execute(
         ip_unicas as CANT_IP_UNICAS,
         id_unicos as CANT_ID_UNICOS
     FROM cte"""
+).fetchdf())
+
+# ========================================
+# ENDPOINTS MÁS USADOS
+# ========================================
+
+print("\n\nLos endpoints más usados son:")
+print(con.execute(
+    """SELECT
+            endpoint as ENDPOINT,
+            COUNT(*) as CANT_PETICIONES,
+            ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM access_logs), 2) as PORCENTAJE           
+        FROM access_logs
+        GROUP BY endpoint
+        ORDER BY CANT_PETICIONES DESC        
+    """
 ).fetchdf())
