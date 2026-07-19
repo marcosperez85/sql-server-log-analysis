@@ -59,6 +59,7 @@ print(con.execute(
 # ========================================
 # ENDPOINTS MÁS USADOS
 # ========================================
+# Indicar cuánto es el porcentaje de uso de cada endpoint
 
 print("\n\nLos endpoints más usados son:")
 print(con.execute(
@@ -75,6 +76,7 @@ print(con.execute(
 # ========================================
 # ANALISIS DE ERRORES
 # ========================================
+# Indicar cuántos usuarios se ven afectados con requests fallidos y la ocurrencia de cada uno
 
 print("\n\nErrores por cada endpoint:")
 print(con.execute(
@@ -96,6 +98,7 @@ print(con.execute(
 # ========================================
 # PERFORMANCE POR ENDPOINT
 # ========================================
+# Indicar cuánto tarda el 90 y 95% de los requests exitosos
 
 print("\n\nPerformance por cada endpoint:")
 print(con.execute(
