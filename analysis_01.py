@@ -71,3 +71,44 @@ print(con.execute(
         ORDER BY CANT_PETICIONES DESC        
     """
 ).fetchdf())
+
+# ========================================
+# ANALISIS DE ERRORES
+# ========================================
+
+print("\n\nErrores por cada endpoint:")
+print(con.execute(
+    """
+    SELECT
+        endpoint as ENDPOINT,
+        COUNT(*) as ERRORES_TOTALES,
+        COUNT(DISTINCT user_id) as USUARIOS_AFECTADOS,
+        ROUND(AVG(response_time_ms),2) as RESPONSE_TIME_PROMEDIO,
+        status_code as STATUS_CODE
+    FROM access_logs
+    WHERE status_code >= 400
+    GROUP BY endpoint, status_code
+    ORDER BY ERRORES_TOTALES DESC
+    """
+).fetchdf())
+
+
+# ========================================
+# PERFORMANCE POR ENDPOINT
+# ========================================
+
+print("\n\nPerformance por cada endpoint:")
+print(con.execute(
+    """
+    SELECT
+        endpoint as ENDPOINT,
+        COUNT(*) as CANT_REQUESTS,
+        PERCENTILE_CONT(0.90) WITHIN GROUP (ORDER BY response_time_ms) as p90_RANK,
+        PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY response_time_ms) as p95_RANK,
+        MAX(response_time_ms) as TIEMPO_MAXIMO  
+    FROM access_logs
+    WHERE status_code < 400 -- Filtro requests exitosos
+    GROUP BY endpoint
+    ORDER BY p95_RANK DESC
+    """
+).fetchdf())
