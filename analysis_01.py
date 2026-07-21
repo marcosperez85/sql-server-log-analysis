@@ -134,3 +134,26 @@ print(con.execute(
     ORDER BY CANT_REQUESTS DESC;
     """
 ).fetchdf())
+
+# ========================================
+# RANKING DE REQUESTS (EXITOSOS) MÁS LENTOS
+# ========================================
+
+print("\n\nEl ranking de los endpoints es:")
+print(con.execute(
+    """
+    WITH ranking AS (
+        SELECT
+            timestamp as TIMESTAMP,
+            endpoint as ENDPOINT,
+            response_time_ms as RESPONSE_TIME,
+            user_id as USER_ID,
+            ROW_NUMBER() OVER(PARTITION BY endpoint ORDER BY response_time_ms DESC) as RN
+        FROM access_logs
+        WHERE status_code < 400    
+    )
+    SELECT * FROM ranking
+    WHERE RN <= 3
+    ORDER BY endpoint, RN DESC
+    """
+).fetchdf())
