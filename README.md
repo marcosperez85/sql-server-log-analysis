@@ -49,15 +49,6 @@ sql-server-log-analysis/
 │
 ├── logs/                          # Carpeta de datos de entrada
 │   ├── access_logs.json          # Logs de acceso HTTP (principal)
-│   ├── error_logs.json
-│   ├── alerts.json
-│   ├── alert_rules.json
-│   ├── deployments.json
-│   ├── incidents.json
-│   ├── on_call_schedules.json
-│   ├── performance_metrics.json
-│   ├── servers.json
-│   └── services.json
 │
 ├── templates/                     # Plantillas de reportes
 │   └── report.md                 # Plantilla Markdown para el reporte
