@@ -157,3 +157,32 @@ print(con.execute(
     ORDER BY endpoint, RN DESC
     """
 ).fetchdf())
+
+# ========================================
+# COMPARACION CON EL PERÍODO ANTERIOR
+# ========================================
+
+print("\n\nComparación del response time de cada endpoint con la fecha anterior registrada:")
+print(con.execute(
+    """
+    WITH calculo AS (
+        SELECT
+            DATE(timestamp) as fecha,
+            endpoint,
+            response_time_ms,
+            status_code,
+            LAG(response_time_ms, 1) OVER(PARTITION BY endpoint ORDER BY fecha DESC) as response_prev
+        FROM access_logs
+        ORDER BY fecha
+    ) SELECT
+        fecha as FECHA,
+        endpoint as ENDPOINT,
+        response_time_ms as RESPONSE_TIME_ACTUAL,
+        response_prev as PERIODO_ANTERIOR,
+        response_time_ms - response_prev as DIFFERENCE
+    FROM calculo
+    WHERE status_code < 400
+    ORDER BY fecha
+    """
+).fetchdf())
+
