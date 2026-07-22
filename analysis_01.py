@@ -188,13 +188,19 @@ report = template.format(
     query6=df6.to_markdown(index=False),
     query7=df7.to_markdown(index=False),
     
-    hallazgo1=
+    hallazgo1 =
     """El endpoint /api/search presenta un p95 de 2.6 segundos durante las horas pico (14:00–16:00), concentrando además el mayor volumen de solicitudes.""",
 
-    impacto1 = 
-    """Un aumento en la latencia sobre este endpoint puede degradar la experiencia de la mayoría de los usuarios y aumentar el consumo de recursos del backend.""",
+    hallazgo2 =
+    """El endpoint /api/products presenta un tiempo de respuesta entre 9,8 y 26 segundos entre las 0 y 4hs el""",
 
-    recomendacion1 =
+    hallazgo3 =
+    """El endpoint /api/cart presenta un tiempo de respuesta de entre 12 y 13 para errores del tipo 503 y 502 con mayor cantidad de ocurrencias y de usuarios afectados""",
+
+    impacto = 
+    """Un aumento en la latencia sobre el endpoint de búsqueda y de productos degrada la experiencia de los usuarios y aumentar el consumo de recursos del backend.""",
+
+    recomendacion =
     """Evaluar la incorporación de un mecanismo de caché para respuestas frecuentes y revisar el plan de ejecución de las consultas a la base de datos para reducir el tiempo de respuesta en las horas de mayor carga."""
 )
 
