@@ -58,14 +58,20 @@ Comparación del response time de cada endpoint con la fecha anterior registrada
 ---
 
 # Recomendaciones
-**Hallazgo**
+**Hallazgo 1**
 {hallazgo1}
 
+**Hallazgo 2**
+{hallazgo2}
+
+**Hallazgo 3**
+{hallazgo3}
+
 **Impacto Potencial**
-{impacto1}
+{impacto}
 
 **Recomendación**
-{recomendacion1}
+{recomendacion}
 
 
 
