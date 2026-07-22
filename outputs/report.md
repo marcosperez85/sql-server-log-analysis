@@ -22,8 +22,8 @@ Indicar cuánto es el porcentaje de uso de cada endpoint
 | /api/auth/logout |                10 |           10 |
 | /api/products    |                 9 |            9 |
 | /metrics         |                 9 |            9 |
-| /api/payments    |                 8 |            8 |
 | /api/users       |                 8 |            8 |
+| /api/payments    |                 8 |            8 |
 | /api/checkout    |                 7 |            7 |
 | /api/auth/login  |                 5 |            5 |
 | /api/orders      |                 4 |            4 |
@@ -38,37 +38,37 @@ Indicar cuántos usuarios se ven afectados con requests fallidos y la ocurrencia
 |:-----------------|------------------:|---------------------:|-------------------------:|--------------:|
 | /api/cart        |                 3 |                    2 |                 13177.3  |           503 |
 | /api/search      |                 3 |                    2 |                   142.67 |           404 |
-| /api/payments    |                 2 |                    2 |                 15323    |           502 |
+| /health          |                 2 |                    0 |                   105    |           403 |
+| /metrics         |                 2 |                    0 |                   322.5  |           401 |
 | /api/products    |                 2 |                    2 |                 23122.5  |           500 |
 | /api/checkout    |                 2 |                    1 |                   327.5  |           401 |
 | /api/products    |                 2 |                    1 |                 23469    |           503 |
 | /health          |                 2 |                    1 |                  2517.5  |           503 |
-| /metrics         |                 2 |                    2 |                   159.5  |           403 |
-| /api/cart        |                 2 |                    2 |                 12452    |           502 |
-| /api/checkout    |                 2 |                    2 |                 15053.5  |           500 |
-| /api/products    |                 2 |                    1 |                   368.5  |           404 |
 | /api/search      |                 2 |                    1 |                   302.5  |           401 |
-| /metrics         |                 2 |                    0 |                   322.5  |           401 |
-| /health          |                 2 |                    0 |                   105    |           403 |
-| /api/search      |                 1 |                    0 |                    86    |           403 |
-| /api/cart        |                 1 |                    1 |                    33    |           404 |
-| /api/orders      |                 1 |                    1 |                    36    |           401 |
-| /health          |                 1 |                    1 |                  2360    |           502 |
+| /api/products    |                 2 |                    1 |                   368.5  |           404 |
+| /metrics         |                 2 |                    2 |                   159.5  |           403 |
+| /api/payments    |                 2 |                    2 |                 15323    |           502 |
+| /api/checkout    |                 2 |                    2 |                 15053.5  |           500 |
+| /api/cart        |                 2 |                    2 |                 12452    |           502 |
 | /api/users       |                 1 |                    0 |                 21292    |           500 |
-| /api/orders      |                 1 |                    1 |                   180    |           404 |
 | /api/users       |                 1 |                    0 |                   456    |           401 |
-| /api/auth/logout |                 1 |                    1 |                 12692    |           502 |
-| /api/checkout    |                 1 |                    1 |                 13663    |           503 |
-| /api/checkout    |                 1 |                    1 |                  1690    |           502 |
-| /api/auth/logout |                 1 |                    0 |                  8135    |           503 |
-| /api/payments    |                 1 |                    0 |                  8884    |           500 |
 | /health          |                 1 |                    1 |                 17791    |           500 |
 | /api/users       |                 1 |                    1 |                   223    |           400 |
-| /api/payments    |                 1 |                    1 |                   477    |           401 |
+| /api/cart        |                 1 |                    1 |                    33    |           404 |
+| /api/auth/logout |                 1 |                    0 |                  8135    |           503 |
+| /api/checkout    |                 1 |                    1 |                  1690    |           502 |
 | /api/auth/logout |                 1 |                    1 |                   102    |           403 |
 | /health          |                 1 |                    0 |                   275    |           400 |
+| /api/payments    |                 1 |                    1 |                   477    |           401 |
+| /api/search      |                 1 |                    0 |                    86    |           403 |
+| /health          |                 1 |                    1 |                  2360    |           502 |
+| /api/auth/logout |                 1 |                    1 |                 12692    |           502 |
+| /api/checkout    |                 1 |                    1 |                 13663    |           503 |
+| /api/payments    |                 1 |                    0 |                  8884    |           500 |
 | /api/auth/login  |                 1 |                    0 |                 11654    |           503 |
 | /api/auth/logout |                 1 |                    1 |                   299    |           404 |
+| /api/orders      |                 1 |                    1 |                   180    |           404 |
+| /api/orders      |                 1 |                    1 |                    36    |           401 |
 
 ---
 
@@ -100,60 +100,54 @@ Para esto busco la hora a la cual se da la mayor cantidad de requests y el mayor
 |   HORA | ENDPOINT         |   CANT REQUESTS |   RESPONSE TIME AVG |
 |-------:|:-----------------|----------------:|--------------------:|
 |      7 | /api/search      |               3 |               203   |
-|      9 | /api/search      |               2 |                86.5 |
-|     15 | /api/auth/logout |               2 |               182.5 |
-|     12 | /metrics         |               2 |                95   |
-|      5 | /health          |               2 |               138.5 |
-|     12 | /api/auth/logout |               2 |               482   |
 |      0 | /api/products    |               2 |              9839.5 |
-|     14 | /api/auth/logout |               2 |             10413.5 |
-|      6 | /api/users       |               2 |               149   |
-|      3 | /api/payments    |               2 |               485.5 |
-|     23 | /api/cart        |               2 |              8283   |
+|     15 | /api/auth/logout |               2 |               182.5 |
 |     17 | /api/cart        |               2 |               218   |
 |     11 | /health          |               2 |              1312   |
+|     15 | /health          |               2 |              1991.5 |
 |     16 | /api/cart        |               2 |              7806.5 |
 |     18 | /api/cart        |               2 |               129.5 |
 |     12 | /health          |               2 |               708.5 |
-|     15 | /health          |               2 |              1991.5 |
-|     18 | /api/users       |               1 |               319   |
-|     23 | /health          |               1 |                67   |
-|     18 | /api/orders      |               1 |               180   |
-|     21 | /api/search      |               1 |                86   |
-|      8 | /metrics         |               1 |               162   |
+|     14 | /api/auth/logout |               2 |             10413.5 |
+|      6 | /api/users       |               2 |               149   |
+|      3 | /api/payments    |               2 |               485.5 |
+|      5 | /health          |               2 |               138.5 |
+|     12 | /metrics         |               2 |                95   |
+|     12 | /api/auth/logout |               2 |               482   |
+|      9 | /api/search      |               2 |                86.5 |
+|     23 | /api/cart        |               2 |              8283   |
+|      2 | /api/checkout    |               1 |             13663   |
+|      4 | /api/products    |               1 |             26781   |
 |     12 | /api/payments    |               1 |             10777   |
 |     21 | /api/auth/logout |               1 |               299   |
 |     17 | /metrics         |               1 |               293   |
 |      6 | /api/auth/login  |               1 |               183   |
-|     14 | /api/cart        |               1 |                77   |
-|     17 | /api/products    |               1 |               334   |
-|      5 | /api/cart        |               1 |             17433   |
-|     23 | /api/search      |               1 |               405   |
-|      0 | /api/cart        |               1 |                73   |
-|      7 | /api/payments    |               1 |              8884   |
-|     17 | /api/checkout    |               1 |               289   |
-|      4 | /api/cart        |               1 |                33   |
-|     21 | /api/cart        |               1 |                30   |
-|      8 | /api/checkout    |               1 |              1690   |
-|      5 | /api/search      |               1 |               277   |
-|      1 | /api/cart        |               1 |              8083   |
-|     22 | /api/search      |               1 |                87   |
-|     18 | /api/checkout    |               1 |             28253   |
-|     17 | /api/search      |               1 |               322   |
-|     16 | /metrics         |               1 |               237   |
-|     13 | /api/products    |               1 |             26948   |
-|     18 | /api/auth/login  |               1 |               416   |
-|      4 | /api/products    |               1 |             26781   |
-|      4 | /metrics         |               1 |                 9   |
+|     19 | /api/auth/login  |               1 |               381   |
+|      3 | /metrics         |               1 |               164   |
+|      0 | /api/auth/logout |               1 |                55   |
+|      8 | /api/payments    |               1 |             19869   |
+|     19 | /health          |               1 |               275   |
+|      3 | /api/products    |               1 |               351   |
+|     20 | /api/users       |               1 |               456   |
 |      0 | /api/orders      |               1 |               406   |
 |     19 | /api/search      |               1 |               200   |
+|     22 | /api/search      |               1 |                87   |
+|     14 | /api/cart        |               1 |                77   |
+|      1 | /api/cart        |               1 |              8083   |
+|      5 | /api/search      |               1 |               277   |
+|     21 | /api/cart        |               1 |                30   |
+|      7 | /api/payments    |               1 |              8884   |
 |      7 | /api/cart        |               1 |               132   |
 |      9 | /metrics         |               1 |                76   |
 |     14 | /api/payments    |               1 |               108   |
 |      3 | /api/auth/logout |               1 |               317   |
 |      5 | /api/products    |               1 |             20157   |
 |      2 | /api/products    |               1 |               488   |
-|     16 | /api/products    |               1 |               355   |
+|     17 | /api/search      |               1 |               322   |
+|     18 | /api/users       |               1 |               319   |
+|     13 | /api/products    |               1 |             26948   |
+|     18 | /api/auth/login  |               1 |               416   |
+|     23 | /health          |               1 |                67   |
 |      9 | /api/users       |               1 |             21292   |
 |      0 | /health          |               1 |             17791   |
 |      5 | /api/auth/login  |               1 |             11654   |
@@ -164,23 +158,29 @@ Para esto busco la hora a la cual se da la mayor cantidad de requests y el mayor
 |     22 | /api/auth/login  |               1 |               125   |
 |     18 | /api/auth/logout |               1 |               292   |
 |     17 | /api/orders      |               1 |               303   |
-|     14 | /api/orders      |               1 |                36   |
-|     19 | /api/auth/login  |               1 |               381   |
-|      3 | /metrics         |               1 |               164   |
-|      0 | /api/auth/logout |               1 |                55   |
-|      8 | /api/payments    |               1 |             19869   |
-|     19 | /health          |               1 |               275   |
-|      3 | /api/products    |               1 |               351   |
-|     20 | /api/users       |               1 |               456   |
-|     19 | /api/payments    |               1 |               451   |
-|     11 | /api/cart        |               1 |              7471   |
-|      6 | /metrics         |               1 |               352   |
-|     12 | /api/checkout    |               1 |               268   |
-|      8 | /api/users       |               1 |                64   |
+|     17 | /api/products    |               1 |               334   |
 |     16 | /api/search      |               1 |                19   |
-|      2 | /api/checkout    |               1 |             13663   |
-|     21 | /health          |               1 |               105   |
+|      8 | /api/users       |               1 |                64   |
+|     17 | /api/checkout    |               1 |               289   |
+|      4 | /api/cart        |               1 |                33   |
+|      8 | /api/checkout    |               1 |              1690   |
+|     12 | /api/checkout    |               1 |               268   |
+|     21 | /api/search      |               1 |                86   |
+|      5 | /api/cart        |               1 |             17433   |
+|     23 | /api/search      |               1 |               405   |
+|      0 | /api/cart        |               1 |                73   |
+|      6 | /metrics         |               1 |               352   |
 |      0 | /api/payments    |               1 |               428   |
+|     18 | /api/orders      |               1 |               180   |
+|     11 | /api/cart        |               1 |              7471   |
+|     19 | /api/payments    |               1 |               451   |
+|     18 | /api/checkout    |               1 |             28253   |
+|     21 | /health          |               1 |               105   |
+|     14 | /api/orders      |               1 |                36   |
+|     16 | /metrics         |               1 |               237   |
+|     16 | /api/products    |               1 |               355   |
+|      4 | /metrics         |               1 |                 9   |
+|      8 | /metrics         |               1 |               162   |
 
 ---
 
@@ -284,12 +284,20 @@ Comparación del response time de cada endpoint con la fecha anterior registrada
 ---
 
 # Recomendaciones
+**Hallazgo 1**
+El endpoint /api/search presenta un p95 de 2.6 segundos durante las horas pico (14:00–16:00), concentrando además el mayor volumen de solicitudes.
+
+**Hallazgo 2**
+El endpoint /api/products presenta un tiempo de respuesta entre 9,8 y 26 segundos entre las 0 y 4hs el
+
+**Hallazgo 3**
+El endpoint /api/cart presenta un tiempo de respuesta de entre 12 y 13 para errores del tipo 503 y 502 con mayor cantidad de ocurrencias y de usuarios afectados
+
+**Impacto Potencial**
+Un aumento en la latencia sobre el endpoint de búsqueda y de productos degrada la experiencia de los usuarios y aumentar el consumo de recursos del backend.
+
+**Recomendación**
+Evaluar la incorporación de un mecanismo de caché para respuestas frecuentes y revisar el plan de ejecución de las consultas a la base de datos para reducir el tiempo de respuesta en las horas de mayor carga.
 
 
-1. Hallazgo: /api/search presenta un p95 de 2.5 s durante las horas pico (14:00–16:00), concentrando además el mayor volumen de solicitudes.
-Impacto potencial: Un aumento en la latencia sobre este endpoint puede degradar la experiencia de la mayoría de los usuarios y aumentar el consumo de recursos del backend.
-Recomendación: Evaluar la incorporación de un mecanismo de caché para respuestas frecuentes y revisar el plan de ejecución de las consultas a la base de datos para reducir el tiempo de respuesta en las horas de mayor carga.
 
-2. Prueba de recomendacion 2
-
-3. Prueba de recomendacion 3
