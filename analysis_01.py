@@ -188,15 +188,14 @@ report = template.format(
     query6=df6.to_markdown(index=False),
     query7=df7.to_markdown(index=False),
     
-    recommendations="""
-1. Hallazgo: /api/search presenta un p95 de 2.5 s durante las horas pico (14:00–16:00), concentrando además el mayor volumen de solicitudes.
-Impacto potencial: Un aumento en la latencia sobre este endpoint puede degradar la experiencia de la mayoría de los usuarios y aumentar el consumo de recursos del backend.
-Recomendación: Evaluar la incorporación de un mecanismo de caché para respuestas frecuentes y revisar el plan de ejecución de las consultas a la base de datos para reducir el tiempo de respuesta en las horas de mayor carga.
+    hallazgo1=
+    """El endpoint /api/search presenta un p95 de 2.6 segundos durante las horas pico (14:00–16:00), concentrando además el mayor volumen de solicitudes.""",
 
-2. Prueba de recomendacion 2
+    impacto1 = 
+    """Un aumento en la latencia sobre este endpoint puede degradar la experiencia de la mayoría de los usuarios y aumentar el consumo de recursos del backend.""",
 
-3. Prueba de recomendacion 3
-"""
+    recomendacion1 =
+    """Evaluar la incorporación de un mecanismo de caché para respuestas frecuentes y revisar el plan de ejecución de las consultas a la base de datos para reducir el tiempo de respuesta en las horas de mayor carga."""
 )
 
 # Guardar resultados en un reporte con formato markdown
